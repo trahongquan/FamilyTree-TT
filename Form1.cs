@@ -16,6 +16,7 @@ using OfficeOpenXml.Style;
 using System.IO;
 using LicenseContext = OfficeOpenXml.LicenseContext;
 using System.Drawing.Printing;
+using System.Security.Cryptography;
 
 namespace FamilyTree
 {
@@ -26,15 +27,15 @@ namespace FamilyTree
         {
             InitializeComponent();
             //Create the root node.
-            Info rootNode = new Info();            
-            rootNode.PersonNode.NameNode = "Gia tộc họ";
-            rootNode.PersonNode.IdFather = "0";
-            rootNode.PersonNode.Id = "0";
-            rootNode.Gen = 0;
-            rootNode.NodeTree.Name = rootNode.PersonNode.NameNode;
-            infos.Add(rootNode);
+            //Info rootNode = new Info();            
+            //rootNode.PersonNode.NameNode = "Gia tộc họ";
+            //rootNode.PersonNode.IdFather = "0";
+            //rootNode.PersonNode.Id = "0";
+            //rootNode.Gen = 0;
+            //rootNode.NodeTree.Name = rootNode.PersonNode.NameNode;
+            //infos.Add(rootNode);
             //Add the root node to the tree view.            
-            treeView1.Nodes.Add(rootNode.NodeTree.Name);
+            //treeView1.Nodes.Add(rootNode.NodeTree.Name);
         }
 
         private void btnThem_Click(object sender, EventArgs e)
@@ -179,6 +180,24 @@ namespace FamilyTree
             }
         }
 
+        int AddTreeView(TreeNode temp, string fatherid)
+        {
+            //TreeNode temp1 = temp;
+            int stt = 0;
+            int i;
+            for (i = 0; i < infos.Count; i++)
+            {
+                if (infos[i].PersonNode.IdFather == fatherid)
+                {
+                    //temp = temp1;
+                    temp.Nodes.Add(infos[i].PersonNode.NameNode);
+                    AddTreeView(temp.Nodes[stt++], infos[i].PersonNode.Id);
+                }
+            }
+
+
+            return 1;
+        }
         private void btnMoFile_Click(object sender, EventArgs e)
         {
             
@@ -198,7 +217,7 @@ namespace FamilyTree
                 ExcelWorksheet workSheet = package.Workbook.Worksheets[0];
 
                 // duyệt tuần tự từ dòng thứ 5 đến dòng cuối cùng của file. lưu ý file excel bắt đầu từ số 1 không phải số 0
-                for (int i = workSheet.Dimension.Start.Row + 4; i <= workSheet.Dimension.End.Row; i++)
+                for (int i = workSheet.Dimension.Start.Row + 3; i <= workSheet.Dimension.End.Row; i++)
                 {
                     try
                     {
@@ -240,26 +259,8 @@ namespace FamilyTree
                         // add user vào danh sách infos
                         
                         infos.Add(user);
-                        treeView1.SelectedNode = infos[0].NodeTree;
-                        foreach (Info info1 in infos)
-                        {                            
-                            if (user.PersonNode.IdFather == info1.PersonNode.Id)
-                            {
-                                treeView1.Refresh();
-                                treeView1.ExpandAll();
-                                treeView1.Focus();
-                                treeView1.SelectedNode = info1.NodeTree;                               
-                                if (treeView1.SelectedNode != null)
-                                {
-                                    treeView1.SelectedNode.Nodes.Add(user.NodeTree.Name);                                   
-                                    treeView1.Refresh();
-                                }
-                                else
-                                {
-                                    MessageBox.Show("Không có node được chọn!");
-                                }
-                            }
-                        }
+
+
                     }
                     catch (Exception exe)
                     {
@@ -272,8 +273,31 @@ namespace FamilyTree
             catch (Exception ee)
             {
                 MessageBox.Show("Lỗi đọc file!");
-            }            
-            treeView1.ExpandAll();           
+            }
+
+            //==========================================================
+            //treeView1.Nodes.Add(infos[0].PersonNode.NameNode);
+            //treeView1.Nodes.Add(infos[1].PersonNode.NameNode);
+
+            //TreeNode temp;
+            //temp = treeView1.Nodes[0];
+            //temp.Nodes.Add(infos[3].PersonNode.NameNode);
+            //temp.Nodes.Add(infos[4].PersonNode.NameNode);
+            //temp.Nodes.Add(infos[4].PersonNode.NameNode);
+
+            //temp = temp.Nodes[0];
+            //temp.Nodes.Add(infos[3].PersonNode.NameNode);
+
+            //temp = temp.Nodes[0];
+            //temp.Nodes.Add(infos[3].PersonNode.NameNode);
+
+            //temp = temp.Nodes[0];
+            //temp.Nodes.Add(infos[3].PersonNode.NameNode);
+
+
+            treeView1.Nodes.Add(infos[0].PersonNode.NameNode);
+            AddTreeView(treeView1.Nodes[0], infos[0].PersonNode.Id);
+            treeView1.ExpandAll();
         }
 
         private void btnThoat_Click(object sender, EventArgs e)

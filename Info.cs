@@ -11,8 +11,10 @@ namespace FamilyTree
     internal class Info : TreeNode
     {
         private Person personNode;
-        private TreeNode nodeTree;
         private int gen;
+
+        private TreeNode nodeTree;
+        
         public Info() {
             this.personNode = new Person();
             this.personNode.Id = "";
@@ -27,7 +29,7 @@ namespace FamilyTree
             this.personNode.Position = "";
             this.personNode.Work_place = "";
             this.personNode.Note = "";
-            this.nodeTree = new TreeNode();
+            this.nodeTree =  new TreeNode();
             this.nodeTree.Name = "";
             this.gen = 0;
         }
