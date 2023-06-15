@@ -61,24 +61,26 @@
             this.lblId = new System.Windows.Forms.Label();
             this.panel7 = new System.Windows.Forms.Panel();
             this.btnLamMoi = new System.Windows.Forms.Button();
+            this.btnIn = new System.Windows.Forms.Button();
             this.btnXuatFile = new System.Windows.Forms.Button();
             this.btnThoat = new System.Windows.Forms.Button();
             this.btnMoFile = new System.Windows.Forms.Button();
             this.panel6 = new System.Windows.Forms.Panel();
-            this.btnCount = new System.Windows.Forms.Button();
-            this.btnIn = new System.Windows.Forms.Button();
+            this.btnThem = new System.Windows.Forms.Button();
+            this.btnLuu = new System.Windows.Forms.Button();
+            this.btnXoa = new System.Windows.Forms.Button();
+            this.btnSua = new System.Windows.Forms.Button();
+            this.btnHuy = new System.Windows.Forms.Button();
             this.panel5 = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
             this.panel4 = new System.Windows.Forms.Panel();
+            this.btnCount = new System.Windows.Forms.Button();
             this.treeView2 = new System.Windows.Forms.TreeView();
             this.txtTim = new System.Windows.Forms.TextBox();
             this.btnTim = new System.Windows.Forms.Button();
             this.panel3 = new System.Windows.Forms.Panel();
-            this.btnThem = new System.Windows.Forms.Button();
-            this.btnLuu = new System.Windows.Forms.Button();
-            this.btnSua = new System.Windows.Forms.Button();
-            this.btnHuy = new System.Windows.Forms.Button();
-            this.btnXoa = new System.Windows.Forms.Button();
+            this.txtDongHo = new System.Windows.Forms.TextBox();
+            this.btnThemDongHo = new System.Windows.Forms.Button();
             this.printDocument1 = new System.Drawing.Printing.PrintDocument();
             this.printDialog1 = new System.Windows.Forms.PrintDialog();
             this.panel1.SuspendLayout();
@@ -162,14 +164,14 @@
             this.txtSex.Location = new System.Drawing.Point(81, 139);
             this.txtSex.Name = "txtSex";
             this.txtSex.Size = new System.Drawing.Size(100, 20);
-            this.txtSex.TabIndex = 9;
+            this.txtSex.TabIndex = 5;
             // 
             // rtbNote
             // 
             this.rtbNote.Location = new System.Drawing.Point(279, 145);
             this.rtbNote.Name = "rtbNote";
             this.rtbNote.Size = new System.Drawing.Size(149, 96);
-            this.rtbNote.TabIndex = 8;
+            this.rtbNote.TabIndex = 12;
             this.rtbNote.Text = "";
             // 
             // lblNote
@@ -186,7 +188,7 @@
             this.txtGen.Location = new System.Drawing.Point(279, 112);
             this.txtGen.Name = "txtGen";
             this.txtGen.Size = new System.Drawing.Size(100, 20);
-            this.txtGen.TabIndex = 1;
+            this.txtGen.TabIndex = 11;
             // 
             // lblGen
             // 
@@ -202,7 +204,7 @@
             this.txtWorkPlace.Location = new System.Drawing.Point(279, 86);
             this.txtWorkPlace.Name = "txtWorkPlace";
             this.txtWorkPlace.Size = new System.Drawing.Size(100, 20);
-            this.txtWorkPlace.TabIndex = 1;
+            this.txtWorkPlace.TabIndex = 10;
             // 
             // lblWorkPlace
             // 
@@ -218,7 +220,7 @@
             this.txtPosition.Location = new System.Drawing.Point(279, 60);
             this.txtPosition.Name = "txtPosition";
             this.txtPosition.Size = new System.Drawing.Size(100, 20);
-            this.txtPosition.TabIndex = 1;
+            this.txtPosition.TabIndex = 9;
             // 
             // lblPosition
             // 
@@ -234,7 +236,7 @@
             this.txtMail.Location = new System.Drawing.Point(279, 34);
             this.txtMail.Name = "txtMail";
             this.txtMail.Size = new System.Drawing.Size(100, 20);
-            this.txtMail.TabIndex = 1;
+            this.txtMail.TabIndex = 8;
             // 
             // lalMail
             // 
@@ -250,7 +252,7 @@
             this.txtPhone.Location = new System.Drawing.Point(279, 8);
             this.txtPhone.Name = "txtPhone";
             this.txtPhone.Size = new System.Drawing.Size(100, 20);
-            this.txtPhone.TabIndex = 1;
+            this.txtPhone.TabIndex = 7;
             // 
             // lblPhone
             // 
@@ -266,7 +268,7 @@
             this.txtHomePlace.Location = new System.Drawing.Point(81, 164);
             this.txtHomePlace.Name = "txtHomePlace";
             this.txtHomePlace.Size = new System.Drawing.Size(100, 20);
-            this.txtHomePlace.TabIndex = 1;
+            this.txtHomePlace.TabIndex = 6;
             // 
             // lblHomePlace
             // 
@@ -291,7 +293,7 @@
             this.txtPassDate.Location = new System.Drawing.Point(81, 112);
             this.txtPassDate.Name = "txtPassDate";
             this.txtPassDate.Size = new System.Drawing.Size(100, 20);
-            this.txtPassDate.TabIndex = 1;
+            this.txtPassDate.TabIndex = 4;
             // 
             // lblPassDate
             // 
@@ -307,7 +309,7 @@
             this.txtDate.Location = new System.Drawing.Point(81, 86);
             this.txtDate.Name = "txtDate";
             this.txtDate.Size = new System.Drawing.Size(100, 20);
-            this.txtDate.TabIndex = 1;
+            this.txtDate.TabIndex = 3;
             // 
             // lblDate
             // 
@@ -323,7 +325,7 @@
             this.txtName.Location = new System.Drawing.Point(81, 60);
             this.txtName.Name = "txtName";
             this.txtName.Size = new System.Drawing.Size(100, 20);
-            this.txtName.TabIndex = 1;
+            this.txtName.TabIndex = 2;
             // 
             // lblName
             // 
@@ -355,7 +357,7 @@
             this.txtId.Location = new System.Drawing.Point(81, 8);
             this.txtId.Name = "txtId";
             this.txtId.Size = new System.Drawing.Size(100, 20);
-            this.txtId.TabIndex = 1;
+            this.txtId.TabIndex = 0;
             // 
             // lblId
             // 
@@ -369,6 +371,7 @@
             // panel7
             // 
             this.panel7.Controls.Add(this.btnLamMoi);
+            this.panel7.Controls.Add(this.btnIn);
             this.panel7.Controls.Add(this.btnXuatFile);
             this.panel7.Controls.Add(this.btnThoat);
             this.panel7.Controls.Add(this.btnMoFile);
@@ -379,7 +382,7 @@
             // 
             // btnLamMoi
             // 
-            this.btnLamMoi.Location = new System.Drawing.Point(182, 11);
+            this.btnLamMoi.Location = new System.Drawing.Point(185, 11);
             this.btnLamMoi.Name = "btnLamMoi";
             this.btnLamMoi.Size = new System.Drawing.Size(75, 23);
             this.btnLamMoi.TabIndex = 2;
@@ -387,9 +390,19 @@
             this.btnLamMoi.UseVisualStyleBackColor = true;
             this.btnLamMoi.Click += new System.EventHandler(this.btnLamMoi_Click_2);
             // 
+            // btnIn
+            // 
+            this.btnIn.Location = new System.Drawing.Point(268, 11);
+            this.btnIn.Name = "btnIn";
+            this.btnIn.Size = new System.Drawing.Size(75, 23);
+            this.btnIn.TabIndex = 0;
+            this.btnIn.Text = "In gia phả";
+            this.btnIn.UseVisualStyleBackColor = true;
+            this.btnIn.Click += new System.EventHandler(this.btnIn_Click);
+            // 
             // btnXuatFile
             // 
-            this.btnXuatFile.Location = new System.Drawing.Point(101, 11);
+            this.btnXuatFile.Location = new System.Drawing.Point(102, 11);
             this.btnXuatFile.Name = "btnXuatFile";
             this.btnXuatFile.Size = new System.Drawing.Size(75, 23);
             this.btnXuatFile.TabIndex = 1;
@@ -399,7 +412,7 @@
             // 
             // btnThoat
             // 
-            this.btnThoat.Location = new System.Drawing.Point(262, 11);
+            this.btnThoat.Location = new System.Drawing.Point(351, 11);
             this.btnThoat.Name = "btnThoat";
             this.btnThoat.Size = new System.Drawing.Size(75, 23);
             this.btnThoat.TabIndex = 0;
@@ -419,32 +432,65 @@
             // 
             // panel6
             // 
-            this.panel6.Controls.Add(this.btnCount);
-            this.panel6.Controls.Add(this.btnIn);
+            this.panel6.Controls.Add(this.btnThem);
+            this.panel6.Controls.Add(this.btnLuu);
+            this.panel6.Controls.Add(this.btnXoa);
+            this.panel6.Controls.Add(this.btnSua);
+            this.panel6.Controls.Add(this.btnHuy);
             this.panel6.Location = new System.Drawing.Point(16, 400);
             this.panel6.Name = "panel6";
             this.panel6.Size = new System.Drawing.Size(443, 43);
             this.panel6.TabIndex = 5;
             // 
-            // btnCount
+            // btnThem
             // 
-            this.btnCount.Location = new System.Drawing.Point(182, 10);
-            this.btnCount.Name = "btnCount";
-            this.btnCount.Size = new System.Drawing.Size(75, 23);
-            this.btnCount.TabIndex = 1;
-            this.btnCount.Text = "Count";
-            this.btnCount.UseVisualStyleBackColor = true;
-            this.btnCount.Click += new System.EventHandler(this.btnCount_Click);
+            this.btnThem.Location = new System.Drawing.Point(23, 11);
+            this.btnThem.Name = "btnThem";
+            this.btnThem.Size = new System.Drawing.Size(75, 23);
+            this.btnThem.TabIndex = 0;
+            this.btnThem.Text = "Thêm";
+            this.btnThem.UseVisualStyleBackColor = true;
+            this.btnThem.Click += new System.EventHandler(this.btnThem_Click);
             // 
-            // btnIn
+            // btnLuu
             // 
-            this.btnIn.Location = new System.Drawing.Point(100, 10);
-            this.btnIn.Name = "btnIn";
-            this.btnIn.Size = new System.Drawing.Size(75, 23);
-            this.btnIn.TabIndex = 0;
-            this.btnIn.Text = "In gia phả";
-            this.btnIn.UseVisualStyleBackColor = true;
-            this.btnIn.Click += new System.EventHandler(this.btnIn_Click);
+            this.btnLuu.Location = new System.Drawing.Point(347, 11);
+            this.btnLuu.Name = "btnLuu";
+            this.btnLuu.Size = new System.Drawing.Size(75, 23);
+            this.btnLuu.TabIndex = 0;
+            this.btnLuu.Text = "Lưu";
+            this.btnLuu.UseVisualStyleBackColor = true;
+            this.btnLuu.Click += new System.EventHandler(this.btnLuu_Click);
+            // 
+            // btnXoa
+            // 
+            this.btnXoa.Location = new System.Drawing.Point(185, 11);
+            this.btnXoa.Name = "btnXoa";
+            this.btnXoa.Size = new System.Drawing.Size(75, 23);
+            this.btnXoa.TabIndex = 0;
+            this.btnXoa.Text = "Xóa";
+            this.btnXoa.UseVisualStyleBackColor = true;
+            this.btnXoa.Click += new System.EventHandler(this.btnXoa_Click);
+            // 
+            // btnSua
+            // 
+            this.btnSua.Location = new System.Drawing.Point(104, 11);
+            this.btnSua.Name = "btnSua";
+            this.btnSua.Size = new System.Drawing.Size(75, 23);
+            this.btnSua.TabIndex = 0;
+            this.btnSua.Text = "Sửa";
+            this.btnSua.UseVisualStyleBackColor = true;
+            this.btnSua.Click += new System.EventHandler(this.btnSua_Click);
+            // 
+            // btnHuy
+            // 
+            this.btnHuy.Location = new System.Drawing.Point(266, 11);
+            this.btnHuy.Name = "btnHuy";
+            this.btnHuy.Size = new System.Drawing.Size(75, 23);
+            this.btnHuy.TabIndex = 0;
+            this.btnHuy.Text = "Hủy bỏ";
+            this.btnHuy.UseVisualStyleBackColor = true;
+            this.btnHuy.Click += new System.EventHandler(this.btnHuy_Click);
             // 
             // panel5
             // 
@@ -468,6 +514,7 @@
             // 
             // panel4
             // 
+            this.panel4.Controls.Add(this.btnCount);
             this.panel4.Controls.Add(this.treeView2);
             this.panel4.Controls.Add(this.txtTim);
             this.panel4.Controls.Add(this.btnTim);
@@ -475,6 +522,16 @@
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(443, 263);
             this.panel4.TabIndex = 2;
+            // 
+            // btnCount
+            // 
+            this.btnCount.Location = new System.Drawing.Point(343, 12);
+            this.btnCount.Name = "btnCount";
+            this.btnCount.Size = new System.Drawing.Size(75, 23);
+            this.btnCount.TabIndex = 1;
+            this.btnCount.Text = "Count";
+            this.btnCount.UseVisualStyleBackColor = true;
+            this.btnCount.Click += new System.EventHandler(this.btnCount_Click);
             // 
             // treeView2
             // 
@@ -487,16 +544,16 @@
             // 
             // txtTim
             // 
-            this.txtTim.Location = new System.Drawing.Point(100, 12);
+            this.txtTim.Location = new System.Drawing.Point(126, 12);
             this.txtTim.Name = "txtTim";
-            this.txtTim.Size = new System.Drawing.Size(155, 20);
+            this.txtTim.Size = new System.Drawing.Size(150, 20);
             this.txtTim.TabIndex = 1;
             // 
             // btnTim
             // 
             this.btnTim.Location = new System.Drawing.Point(19, 12);
             this.btnTim.Name = "btnTim";
-            this.btnTim.Size = new System.Drawing.Size(75, 23);
+            this.btnTim.Size = new System.Drawing.Size(101, 23);
             this.btnTim.TabIndex = 0;
             this.btnTim.Text = "Tìm kiếm";
             this.btnTim.UseVisualStyleBackColor = true;
@@ -504,65 +561,29 @@
             // 
             // panel3
             // 
-            this.panel3.Controls.Add(this.btnThem);
-            this.panel3.Controls.Add(this.btnLuu);
-            this.panel3.Controls.Add(this.btnSua);
-            this.panel3.Controls.Add(this.btnHuy);
-            this.panel3.Controls.Add(this.btnXoa);
+            this.panel3.Controls.Add(this.txtDongHo);
+            this.panel3.Controls.Add(this.btnThemDongHo);
             this.panel3.Location = new System.Drawing.Point(16, 72);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(443, 58);
             this.panel3.TabIndex = 1;
             // 
-            // btnThem
+            // txtDongHo
             // 
-            this.btnThem.Location = new System.Drawing.Point(19, 17);
-            this.btnThem.Name = "btnThem";
-            this.btnThem.Size = new System.Drawing.Size(75, 23);
-            this.btnThem.TabIndex = 0;
-            this.btnThem.Text = "Thêm";
-            this.btnThem.UseVisualStyleBackColor = true;
-            this.btnThem.Click += new System.EventHandler(this.btnThem_Click);
+            this.txtDongHo.Location = new System.Drawing.Point(126, 22);
+            this.txtDongHo.Name = "txtDongHo";
+            this.txtDongHo.Size = new System.Drawing.Size(150, 20);
+            this.txtDongHo.TabIndex = 1;
             // 
-            // btnLuu
+            // btnThemDongHo
             // 
-            this.btnLuu.Location = new System.Drawing.Point(343, 17);
-            this.btnLuu.Name = "btnLuu";
-            this.btnLuu.Size = new System.Drawing.Size(75, 23);
-            this.btnLuu.TabIndex = 0;
-            this.btnLuu.Text = "Lưu";
-            this.btnLuu.UseVisualStyleBackColor = true;
-            this.btnLuu.Click += new System.EventHandler(this.btnLuu_Click);
-            // 
-            // btnSua
-            // 
-            this.btnSua.Location = new System.Drawing.Point(100, 17);
-            this.btnSua.Name = "btnSua";
-            this.btnSua.Size = new System.Drawing.Size(75, 23);
-            this.btnSua.TabIndex = 0;
-            this.btnSua.Text = "Sửa";
-            this.btnSua.UseVisualStyleBackColor = true;
-            this.btnSua.Click += new System.EventHandler(this.btnSua_Click);
-            // 
-            // btnHuy
-            // 
-            this.btnHuy.Location = new System.Drawing.Point(262, 17);
-            this.btnHuy.Name = "btnHuy";
-            this.btnHuy.Size = new System.Drawing.Size(75, 23);
-            this.btnHuy.TabIndex = 0;
-            this.btnHuy.Text = "Hủy bỏ";
-            this.btnHuy.UseVisualStyleBackColor = true;
-            this.btnHuy.Click += new System.EventHandler(this.btnHuy_Click);
-            // 
-            // btnXoa
-            // 
-            this.btnXoa.Location = new System.Drawing.Point(181, 17);
-            this.btnXoa.Name = "btnXoa";
-            this.btnXoa.Size = new System.Drawing.Size(75, 23);
-            this.btnXoa.TabIndex = 0;
-            this.btnXoa.Text = "Xóa";
-            this.btnXoa.UseVisualStyleBackColor = true;
-            this.btnXoa.Click += new System.EventHandler(this.btnXoa_Click);
+            this.btnThemDongHo.Location = new System.Drawing.Point(19, 22);
+            this.btnThemDongHo.Name = "btnThemDongHo";
+            this.btnThemDongHo.Size = new System.Drawing.Size(101, 23);
+            this.btnThemDongHo.TabIndex = 0;
+            this.btnThemDongHo.Text = "Thêm ông tổ";
+            this.btnThemDongHo.UseVisualStyleBackColor = true;
+            this.btnThemDongHo.Click += new System.EventHandler(this.btnThemDongHo_Click);
             // 
             // printDocument1
             // 
@@ -595,6 +616,7 @@
             this.panel4.ResumeLayout(false);
             this.panel4.PerformLayout();
             this.panel3.ResumeLayout(false);
+            this.panel3.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -654,6 +676,8 @@
         private System.Windows.Forms.TreeView treeView2;
         private System.Drawing.Printing.PrintDocument printDocument1;
         private System.Windows.Forms.PrintDialog printDialog1;
+        private System.Windows.Forms.Button btnThemDongHo;
+        private System.Windows.Forms.TextBox txtDongHo;
     }
 }
 

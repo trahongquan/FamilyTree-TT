@@ -1,22 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement;
-using System.Xml.Linq;
-using FamilyTree;
-using System.ComponentModel.Design.Serialization;
 using OfficeOpenXml;
 using OfficeOpenXml.Style;
 using System.IO;
 using LicenseContext = OfficeOpenXml.LicenseContext;
 using System.Drawing.Printing;
-using System.Security.Cryptography;
 
 namespace FamilyTree
 {
@@ -25,22 +16,12 @@ namespace FamilyTree
         List <Info> infos = new List <Info> ();
         public Form1()
         {
-            InitializeComponent();
-            //Create the root node.
-            //Info rootNode = new Info();            
-            //rootNode.PersonNode.NameNode = "Gia tộc họ";
-            //rootNode.PersonNode.IdFather = "0";
-            //rootNode.PersonNode.Id = "0";
-            //rootNode.Gen = 0;
-            //rootNode.NodeTree.Name = rootNode.PersonNode.NameNode;
-            //infos.Add(rootNode);
-            //Add the root node to the tree view.            
-            //treeView1.Nodes.Add(rootNode.NodeTree.Name);
+            InitializeComponent();            
         }
 
         private void btnThem_Click(object sender, EventArgs e)
         {
-            ClearBox();
+            ClearBox();            
             btnSua.Enabled = false;
             btnXoa.Enabled = false;
             EnableBox();
@@ -108,12 +89,14 @@ namespace FamilyTree
 
         private void btnLuu_Click(object sender, EventArgs e)
         {
-            if (txtId.Text == "")
+            Info info = new Info();
+            if (txtId.Text == "" || txtIdFather.Text == "" || txtName.Text == "" || txtDate.Text == "" || txtPassDate.Text == "" || txtSex.Text == ""
+                || txtHomePlace.Text == "" || txtPhone.Text == "" || txtMail.Text == "" || txtPosition.Text == "" || txtWorkPlace.Text == ""
+                || rtbNote.Text == "" || txtGen.Text == "")
             {
-                MessageBox.Show("Chưa nhập ID hoặc dữ liệu!");
+                MessageBox.Show("Còn dữ liệu chưa nhập");
                 return;
             }
-            Info info = new Info();
             info.PersonNode.Id = txtId.Text;
             info.PersonNode.IdFather = txtIdFather.Text;
             info.PersonNode.NameNode = txtName.Text;
@@ -137,7 +120,7 @@ namespace FamilyTree
                 }  
             }
             infos.Add(info);
-            treeView1.SelectedNode.Nodes.Add(info.NodeTree.Name);
+            treeView1.SelectedNode.Nodes.Add(info.NodeTree.Name + " - " + info.PersonNode.Date + " - " + info.PersonNode.Home_place);
             treeView1.Refresh();
             ClearBox();
             DisabledBox();
@@ -160,14 +143,15 @@ namespace FamilyTree
                 if ((txtTim.Text.Contains(info1.PersonNode.NameNode)) || (txtTim.Text.Contains(info1.PersonNode.Date)) 
                     || (txtTim.Text.Contains(info1.PersonNode.PassDate)) || (txtTim.Text.Contains(info1.PersonNode.Sex))
                         || (txtTim.Text.Contains(info1.PersonNode.Home_place)) 
-                        || (txtTim.Text.Contains(info1.PersonNode.Position)) || (txtTim.Text.Contains(info1.PersonNode.Work_place)))
+                        || (txtTim.Text.Contains(info1.PersonNode.Position)) || (txtTim.Text.Contains(info1.PersonNode.Work_place))
+                        || (txtTim.Text.Contains(info1.Gen.ToString())))
                 {
                     infotemp.Add(info1);
                     treeView2.Nodes.Add(info1.NodeTree.Name);                    
                     treeView2.Refresh();
                 }
             }
-            MessageBox.Show("Có " + (treeView2.Nodes.Count - 1) + " dữ liệu phù hợp với điều kiện tìm!");
+            MessageBox.Show("Có " + (treeView2.Nodes.Count) + " dữ liệu phù hợp với điều kiện tìm!");
         }
 
         private void btnIn_Click(object sender, EventArgs e)
@@ -182,93 +166,138 @@ namespace FamilyTree
 
         int AddTreeView(TreeNode temp, string fatherid)
         {
-            //TreeNode temp1 = temp;
             int stt = 0;
             int i;
             for (i = 0; i < infos.Count; i++)
             {
                 if (infos[i].PersonNode.IdFather == fatherid)
                 {
-                    //temp = temp1;
-                    temp.Nodes.Add(infos[i].PersonNode.NameNode);
+                    temp.Nodes.Add(infos[i].PersonNode.NameNode + " - " + infos[i].PersonNode.Date + " - " + infos[i].PersonNode.Home_place);
                     AddTreeView(temp.Nodes[stt++], infos[i].PersonNode.Id);
                 }
             }
-
-
             return 1;
         }
         private void btnMoFile_Click(object sender, EventArgs e)
         {
-            
+            string id, idFather, name, date, passDate, sex, homePlace, phone, email, position, workPlace, gen, note;
             if (infos.Count > 1)
             { 
                 MessageBox.Show("Đã có dữ liệu được mở!");
                 return;
             }
+            // tạo OpenFileDialog để lưu file excel
+            OpenFileDialog dialog = new OpenFileDialog();
+
+            // chỉ lọc ra các file có định dạng Excel
+            dialog.Filter = "Excel|*.xlsx|Excel 2003|*.xls";            
             
             try
             {
                 ExcelPackage.LicenseContext = LicenseContext.NonCommercial; //Nếu ko có dòng này thì sẽ có ex "Please set the ExcelPackage.LicenseContext properties"
                 // mở file excel
-                var package = new ExcelPackage(new FileInfo("D:\\1. HOC TAP\\1. LOP CNTT12\\11. KY THUAT LAP TRINH\\FamilyTree\\1.xlsx"));
-
-                // lấy ra sheet đầu tiên để thao tác
-                ExcelWorksheet workSheet = package.Workbook.Worksheets[0];
-
-                // duyệt tuần tự từ dòng thứ 5 đến dòng cuối cùng của file. lưu ý file excel bắt đầu từ số 1 không phải số 0
-                for (int i = workSheet.Dimension.Start.Row + 3; i <= workSheet.Dimension.End.Row; i++)
+                if (dialog.ShowDialog() == DialogResult.OK)
                 {
-                    try
+                    //using (var stream = File.Open(dialog.FileName, FileMode.Open, FileAccess.Read, FileShare.ReadWrite))
+                    var package = new ExcelPackage(new FileInfo(dialog.FileName));//, FileMode.Open, FileAccess.Read, FileShare.ReadWrite));
+
+                    // lấy ra sheet đầu tiên để thao tác
+                    ExcelWorksheet workSheet = package.Workbook.Worksheets[0];
+
+                    // duyệt tuần tự từ dòng thứ 5 đến dòng cuối cùng của file. lưu ý file excel bắt đầu từ số 1 không phải số 0
+                    for (int i = workSheet.Dimension.Start.Row + 3; i <= workSheet.Dimension.End.Row; i++)
                     {
-                        // biến j biểu thị cho một column trong file
-                        int j = 1;
+                        try
+                        {
+                            // biến j biểu thị cho một column trong file
+                            //int j = 1;
 
-                        // lấy ra cột ID tương ứng giá trị tại vị trí [i, j++]. i lần đầu = 3, j = 1  // tăng j lên 1 đơn vị sau khi thực hiện xong câu lệnh
-                        string id = workSheet.Cells[i, j++].Value.ToString();                      
-                        string idFather = workSheet.Cells[i, j++].Value.ToString();                     
-                        string name = workSheet.Cells[i, j++].Value.ToString();                      
-                        string date = workSheet.Cells[i, j++].Value.ToString();                    
-                        string passDate = workSheet.Cells[i, j++].Value.ToString();                      
-                        string sex = workSheet.Cells[i, j++].Value.ToString();                      
-                        string homePlace = workSheet.Cells[i, j++].Value.ToString();                       
-                        string phone = workSheet.Cells[i, j++].Value.ToString();                       
-                        string email = workSheet.Cells[i, j++].Value.ToString();                      
-                        string position = workSheet.Cells[i, j++].Value.ToString();                      
-                        string workPlace = workSheet.Cells[i, j++].Value.ToString();                      
-                        string gen = workSheet.Cells[i, j++].Value.ToString();                      
-                        string note = workSheet.Cells[i, j++].Value.ToString();
+                            // lấy ra cột ID tương ứng giá trị tại vị trí [i, j++]. i lần đầu = 4, j = 1  // tăng j lên 1 đơn vị sau khi thực hiện xong câu lệnh
+                            try
+                            {
+                                if (workSheet.Cells[3, 1].Value.ToString().Trim() != "ID")
+                                {
+                                    MessageBox.Show("Định dạng file không hợp lệ!");
+                                    return;
+                                }
+                                else
+                                {                                   
+                                    if (workSheet.Cells[i, 1].Value == null || workSheet.Cells[i, 2].Value == null || workSheet.Cells[i, 3].Value == null
+                                        || workSheet.Cells[i, 4].Value == null || workSheet.Cells[i, 5].Value == null || workSheet.Cells[i, 6].Value == null
+                                        || workSheet.Cells[i, 7].Value == null || workSheet.Cells[i, 8].Value == null || workSheet.Cells[i, 9].Value == null
+                                        || workSheet.Cells[i, 10].Value == null || workSheet.Cells[i, 11].Value == null || workSheet.Cells[i, 12].Value == null
+                                        || workSheet.Cells[i, 13].Value == null)
+                                    {
+                                        MessageBox.Show("Dữ liệu nhập vào không hợp lệ!");
+                                        return;                                        
+                                    }
+                                    else
+                                    {
+                                        id = workSheet.Cells[i, 1].Value.ToString();
+                                        idFather = workSheet.Cells[i, 2].Value.ToString();
+                                        name = workSheet.Cells[i, 3].Value.ToString();
+                                        date = workSheet.Cells[i, 4].Value.ToString();
+                                        passDate = workSheet.Cells[i, 5].Value.ToString();
+                                        sex = workSheet.Cells[i, 6].Value.ToString();
+                                        homePlace = workSheet.Cells[i, 7].Value.ToString();
+                                        phone = workSheet.Cells[i, 8].Value.ToString();
+                                        email = workSheet.Cells[i, 9].Value.ToString();
+                                        position = workSheet.Cells[i, 10].Value.ToString();
+                                        workPlace = workSheet.Cells[i, 11].Value.ToString();
+                                        gen = workSheet.Cells[i, 12].Value.ToString();
+                                        note = workSheet.Cells[i, 13].Value.ToString();
 
-                        // tạo user từ dữ liệu đã lấy được
-                        Info user = new Info();
-                        user.PersonNode.Id = id;
-                        user.PersonNode.IdFather = idFather;
-                        user.PersonNode.NameNode = name;
-                        user.PersonNode.Date = date;
-                        user.PersonNode.PassDate = passDate;
-                        user.PersonNode.Sex = sex;
-                        user.PersonNode.Home_place = homePlace;
-                        user.PersonNode.Phone = phone;
-                        user.PersonNode.Email = email;
-                        user.PersonNode.Position = position;
-                        user.PersonNode.Work_place = workPlace;
-                        user.PersonNode.Note = note;
-                        user.Gen = Int32.Parse(gen);
-                        user.NodeTree.Name = name;
+                                        // tạo user từ dữ liệu đã lấy được
+                                        Info user = new Info();
+                                        user.PersonNode.Id = id;
+                                        user.PersonNode.IdFather = idFather;
+                                        user.PersonNode.NameNode = name;
+                                        user.PersonNode.Date = date;
+                                        user.PersonNode.PassDate = passDate;
+                                        user.PersonNode.Sex = sex;
+                                        user.PersonNode.Home_place = homePlace;
+                                        user.PersonNode.Phone = phone;
+                                        user.PersonNode.Email = email;
+                                        user.PersonNode.Position = position;
+                                        user.PersonNode.Work_place = workPlace;
+                                        user.PersonNode.Note = note;
+                                        user.Gen = Int32.Parse(gen);
+                                        user.NodeTree.Name = name;
 
-                        // add user vào danh sách infos
-                        
-                        infos.Add(user);
+                                        // add user vào danh sách infos
 
-
+                                        infos.Add(user);
+                                    }
+                                        
+                                }
+                            }
+                            catch (Exception ex)
+                            {
+                                MessageBox.Show("Định dạng file không hợp lệ!");
+                            }
+                            
+                        }
+                        catch (Exception exe)
+                        {
+                            MessageBox.Show(exe.ToString());
+                        }
                     }
-                    catch (Exception exe)
-                    {
-                        MessageBox.Show(exe.ToString());
-                    }                    
+                    MessageBox.Show("Mở file thành công!");
+                    treeView1.Refresh();
                 }
-                MessageBox.Show("Mở file thành công!");
-                treeView1.Refresh();
+                else
+                {
+                    // nếu đường dẫn null hoặc rỗng thì báo không hợp lệ và return hàm
+                    if (string.IsNullOrEmpty(dialog.FileName))
+                    {
+                        MessageBox.Show("Đường dẫn không hợp lệ");
+                        return;
+                    }
+                    else if (dialog.ShowDialog() == DialogResult.Cancel)
+                    {
+                        return;
+                    }
+                }
             }
             catch (Exception ee)
             {
@@ -321,7 +350,7 @@ namespace FamilyTree
             txtGen.Enabled = false;
             foreach (Info info1 in infos)
             {
-                if (treeView1.SelectedNode.ToString().Substring(10) == info1.NodeTree.Name)
+                if (treeView1.SelectedNode.ToString().Substring(10) == info1.NodeTree.Name + " - " + info1.PersonNode.Date + " - " + info1.PersonNode.Home_place)
                 {
                     txtIdFather.Text = info1.PersonNode.Id;
                     txtGen.Text = (info1.Gen + 1).ToString();
@@ -396,7 +425,7 @@ namespace FamilyTree
 
         private void btnCount_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("Tổng số người: " + infos.Count + " và tổng số node: " + treeView1.GetNodeCount(true));
+            MessageBox.Show("Tổng số người trong dòng họ: " + infos.Count + " và tổng số node trong cây: " + treeView1.GetNodeCount(true));
         }
         private int CheckName(string name)
         {
@@ -413,7 +442,7 @@ namespace FamilyTree
             SaveFileDialog dialog = new SaveFileDialog();
 
             // chỉ lọc ra các file có định dạng Excel
-            dialog.Filter = "Excel | *.xlsx | Excel 2003 | *.xls";
+            dialog.Filter = "Excel|*.xlsx|Excel 2003|*.xls";
 
             // Nếu mở file và chọn nơi lưu file thành công sẽ lưu đường dẫn lại dùng
             if (dialog.ShowDialog() == DialogResult.OK)
@@ -530,17 +559,6 @@ namespace FamilyTree
             {
                 treeView1.Nodes.Clear();
                 infos.Clear();
-
-                //Create the root node.
-                Info rootNode = new Info();
-                rootNode.PersonNode.NameNode = "Gia tộc họ";
-                rootNode.PersonNode.IdFather = "0";
-                rootNode.PersonNode.Id = "0";
-                rootNode.Gen = 0;
-                rootNode.NodeTree.Name = rootNode.PersonNode.NameNode;
-                infos.Add(rootNode);
-                //Add the root node to the tree view.            
-                treeView1.Nodes.Add(rootNode.NodeTree.Name);
                 treeView1.Refresh();
             }
             catch (Exception e1)
@@ -559,7 +577,7 @@ namespace FamilyTree
             txtId.Enabled = false;
             foreach (Info info1 in infos)
             {
-                if (treeView1.SelectedNode.ToString().Substring(10) == info1.NodeTree.Name)
+                if (treeView1.SelectedNode.ToString().Substring(10) == info1.NodeTree.Name + " - " + info1.PersonNode.Date + " - " + info1.PersonNode.Home_place)
                 {
                     DisplayPerson(info1);
                 }
@@ -588,64 +606,26 @@ namespace FamilyTree
             e.Graphics.DrawImage(bmp, 0, 0);
             MessageBox.Show("Tạo sơ đồ gia phả thành công!");
         }
-        private int MaxGen()
+
+        private void btnThemDongHo_Click(object sender, EventArgs e)
         {
-            int max = 0;
-            int [] generation = new int[100];
-            int i = 0;
-            foreach (Info info in infos)
+            if (infos.Count == 0)
             {
-                generation[i] = info.Gen;
+                Info rootNode = new Info();
+                rootNode.PersonNode.NameNode = txtDongHo.Text;
+                rootNode.PersonNode.IdFather = "-1";
+                rootNode.PersonNode.Id = "1";
+                rootNode.Gen = 0;
+                rootNode.NodeTree.Name = rootNode.PersonNode.NameNode;
+                infos.Add(rootNode);
+                treeView1.Nodes.Add(rootNode.NodeTree.Name);
+                txtDongHo.Text = "";
             }
-            for (int j =  0; j < generation.Length; j++)
+            else
             {
-                for (int k = j + 1; k < generation.Length; k++)
-                {
-                    if (generation[j] < generation[k])
-                    {
-                        max = generation[k];
-                    }
-                    else
-                    {
-                        max = generation[j];
-                    }
-                }
-            }
-            return max;
-        }
-        private void LoadTree(Info user)
-        {
-            foreach (Info info1 in infos)
-            {
-                if (user.PersonNode.IdFather == info1.PersonNode.Id)
-                {
-                    if (treeView1.SelectedNode != null)
-                    {
-                        info1.Nodes.Add(user.NodeTree.Name);
-                    }
-                    else
-                    {
-                        MessageBox.Show("Không có node được chọn!");
-                    }
-                }
-            }
-        }
-        private void AddNode(Info user)
-        {
-            foreach(Info info in infos)
-            {                
-                for (int i = 0; i < infos.Count; i++)
-                {
-                    if (user.PersonNode.IdFather == info.PersonNode.Id)
-                        treeView1.Nodes.Add(info.NodeTree.Name);
-                    for (int j = 0; j < infos.Count; j++)
-                    {
-                        treeView1.Nodes[i].Nodes.Add(info.NodeTree.Name);
-                    }
-                }
+                MessageBox.Show("Đã có dòng họ. Không thể thêm dòng họ!");
             }
             
         }
-
     }
 }
