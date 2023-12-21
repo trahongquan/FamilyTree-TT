@@ -16,3 +16,20 @@ D:\1. HOC TAP\1. LOP CNTT12\11. KY THUAT LAP TRINH\FamilyTree\bin\Debug\Microsof
 D:\1. HOC TAP\1. LOP CNTT12\11. KY THUAT LAP TRINH\FamilyTree\bin\Debug\EPPlus.xml
 D:\1. HOC TAP\1. LOP CNTT12\11. KY THUAT LAP TRINH\FamilyTree\bin\Debug\Microsoft.IO.RecyclableMemoryStream.xml
 D:\1. HOC TAP\1. LOP CNTT12\11. KY THUAT LAP TRINH\FamilyTree\obj\Debug\FamilyTree.csproj.CopyComplete
+D:\VB2\2. Ki.II\7. Thực tập KTLT\THực tập\FamilyTree -final\bin\Debug\FamilyTree.exe.config
+D:\VB2\2. Ki.II\7. Thực tập KTLT\THực tập\FamilyTree -final\bin\Debug\FamilyTree.exe
+D:\VB2\2. Ki.II\7. Thực tập KTLT\THực tập\FamilyTree -final\bin\Debug\FamilyTree.pdb
+D:\VB2\2. Ki.II\7. Thực tập KTLT\THực tập\FamilyTree -final\bin\Debug\EPPlus.dll
+D:\VB2\2. Ki.II\7. Thực tập KTLT\THực tập\FamilyTree -final\bin\Debug\EPPlus.Interfaces.dll
+D:\VB2\2. Ki.II\7. Thực tập KTLT\THực tập\FamilyTree -final\bin\Debug\EPPlus.System.Drawing.dll
+D:\VB2\2. Ki.II\7. Thực tập KTLT\THực tập\FamilyTree -final\bin\Debug\Microsoft.IO.RecyclableMemoryStream.dll
+D:\VB2\2. Ki.II\7. Thực tập KTLT\THực tập\FamilyTree -final\bin\Debug\EPPlus.xml
+D:\VB2\2. Ki.II\7. Thực tập KTLT\THực tập\FamilyTree -final\bin\Debug\Microsoft.IO.RecyclableMemoryStream.xml
+D:\VB2\2. Ki.II\7. Thực tập KTLT\THực tập\FamilyTree -final\obj\Debug\FamilyTree.csproj.AssemblyReference.cache
+D:\VB2\2. Ki.II\7. Thực tập KTLT\THực tập\FamilyTree -final\obj\Debug\FamilyTree.Form1.resources
+D:\VB2\2. Ki.II\7. Thực tập KTLT\THực tập\FamilyTree -final\obj\Debug\FamilyTree.Properties.Resources.resources
+D:\VB2\2. Ki.II\7. Thực tập KTLT\THực tập\FamilyTree -final\obj\Debug\FamilyTree.csproj.GenerateResource.cache
+D:\VB2\2. Ki.II\7. Thực tập KTLT\THực tập\FamilyTree -final\obj\Debug\FamilyTree.csproj.CoreCompileInputs.cache
+D:\VB2\2. Ki.II\7. Thực tập KTLT\THực tập\FamilyTree -final\obj\Debug\FamilyTree.csproj.CopyComplete
+D:\VB2\2. Ki.II\7. Thực tập KTLT\THực tập\FamilyTree -final\obj\Debug\FamilyTree.exe
+D:\VB2\2. Ki.II\7. Thực tập KTLT\THực tập\FamilyTree -final\obj\Debug\FamilyTree.pdb

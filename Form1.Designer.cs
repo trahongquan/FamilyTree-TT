@@ -79,6 +79,7 @@
             this.txtTim = new System.Windows.Forms.TextBox();
             this.btnTim = new System.Windows.Forms.Button();
             this.panel3 = new System.Windows.Forms.Panel();
+            this.ExpadClose = new System.Windows.Forms.Button();
             this.txtDongHo = new System.Windows.Forms.TextBox();
             this.btnThemDongHo = new System.Windows.Forms.Button();
             this.printDocument1 = new System.Drawing.Printing.PrintDocument();
@@ -161,23 +162,23 @@
             // 
             // txtSex
             // 
-            this.txtSex.Location = new System.Drawing.Point(81, 139);
+            this.txtSex.Location = new System.Drawing.Point(112, 139);
             this.txtSex.Name = "txtSex";
             this.txtSex.Size = new System.Drawing.Size(100, 20);
             this.txtSex.TabIndex = 5;
             // 
             // rtbNote
             // 
-            this.rtbNote.Location = new System.Drawing.Point(279, 145);
+            this.rtbNote.Location = new System.Drawing.Point(310, 145);
             this.rtbNote.Name = "rtbNote";
-            this.rtbNote.Size = new System.Drawing.Size(149, 96);
+            this.rtbNote.Size = new System.Drawing.Size(118, 96);
             this.rtbNote.TabIndex = 12;
             this.rtbNote.Text = "";
             // 
             // lblNote
             // 
             this.lblNote.AutoSize = true;
-            this.lblNote.Location = new System.Drawing.Point(206, 145);
+            this.lblNote.Location = new System.Drawing.Point(237, 145);
             this.lblNote.Name = "lblNote";
             this.lblNote.Size = new System.Drawing.Size(44, 13);
             this.lblNote.TabIndex = 0;
@@ -185,7 +186,7 @@
             // 
             // txtGen
             // 
-            this.txtGen.Location = new System.Drawing.Point(279, 112);
+            this.txtGen.Location = new System.Drawing.Point(310, 112);
             this.txtGen.Name = "txtGen";
             this.txtGen.Size = new System.Drawing.Size(100, 20);
             this.txtGen.TabIndex = 11;
@@ -193,7 +194,7 @@
             // lblGen
             // 
             this.lblGen.AutoSize = true;
-            this.lblGen.Location = new System.Drawing.Point(206, 119);
+            this.lblGen.Location = new System.Drawing.Point(237, 119);
             this.lblGen.Name = "lblGen";
             this.lblGen.Size = new System.Drawing.Size(41, 13);
             this.lblGen.TabIndex = 0;
@@ -201,7 +202,7 @@
             // 
             // txtWorkPlace
             // 
-            this.txtWorkPlace.Location = new System.Drawing.Point(279, 86);
+            this.txtWorkPlace.Location = new System.Drawing.Point(310, 86);
             this.txtWorkPlace.Name = "txtWorkPlace";
             this.txtWorkPlace.Size = new System.Drawing.Size(100, 20);
             this.txtWorkPlace.TabIndex = 10;
@@ -209,7 +210,7 @@
             // lblWorkPlace
             // 
             this.lblWorkPlace.AutoSize = true;
-            this.lblWorkPlace.Location = new System.Drawing.Point(206, 93);
+            this.lblWorkPlace.Location = new System.Drawing.Point(237, 93);
             this.lblWorkPlace.Name = "lblWorkPlace";
             this.lblWorkPlace.Size = new System.Drawing.Size(65, 13);
             this.lblWorkPlace.TabIndex = 0;
@@ -217,7 +218,7 @@
             // 
             // txtPosition
             // 
-            this.txtPosition.Location = new System.Drawing.Point(279, 60);
+            this.txtPosition.Location = new System.Drawing.Point(310, 60);
             this.txtPosition.Name = "txtPosition";
             this.txtPosition.Size = new System.Drawing.Size(100, 20);
             this.txtPosition.TabIndex = 9;
@@ -225,7 +226,7 @@
             // lblPosition
             // 
             this.lblPosition.AutoSize = true;
-            this.lblPosition.Location = new System.Drawing.Point(206, 67);
+            this.lblPosition.Location = new System.Drawing.Point(237, 67);
             this.lblPosition.Name = "lblPosition";
             this.lblPosition.Size = new System.Drawing.Size(47, 13);
             this.lblPosition.TabIndex = 0;
@@ -233,7 +234,7 @@
             // 
             // txtMail
             // 
-            this.txtMail.Location = new System.Drawing.Point(279, 34);
+            this.txtMail.Location = new System.Drawing.Point(310, 34);
             this.txtMail.Name = "txtMail";
             this.txtMail.Size = new System.Drawing.Size(100, 20);
             this.txtMail.TabIndex = 8;
@@ -241,7 +242,7 @@
             // lalMail
             // 
             this.lalMail.AutoSize = true;
-            this.lalMail.Location = new System.Drawing.Point(206, 41);
+            this.lalMail.Location = new System.Drawing.Point(237, 41);
             this.lalMail.Name = "lalMail";
             this.lalMail.Size = new System.Drawing.Size(32, 13);
             this.lalMail.TabIndex = 0;
@@ -249,7 +250,7 @@
             // 
             // txtPhone
             // 
-            this.txtPhone.Location = new System.Drawing.Point(279, 8);
+            this.txtPhone.Location = new System.Drawing.Point(310, 8);
             this.txtPhone.Name = "txtPhone";
             this.txtPhone.Size = new System.Drawing.Size(100, 20);
             this.txtPhone.TabIndex = 7;
@@ -257,7 +258,7 @@
             // lblPhone
             // 
             this.lblPhone.AutoSize = true;
-            this.lblPhone.Location = new System.Drawing.Point(206, 15);
+            this.lblPhone.Location = new System.Drawing.Point(237, 15);
             this.lblPhone.Name = "lblPhone";
             this.lblPhone.Size = new System.Drawing.Size(70, 13);
             this.lblPhone.TabIndex = 0;
@@ -265,7 +266,7 @@
             // 
             // txtHomePlace
             // 
-            this.txtHomePlace.Location = new System.Drawing.Point(81, 164);
+            this.txtHomePlace.Location = new System.Drawing.Point(112, 164);
             this.txtHomePlace.Name = "txtHomePlace";
             this.txtHomePlace.Size = new System.Drawing.Size(100, 20);
             this.txtHomePlace.TabIndex = 6;
@@ -290,7 +291,7 @@
             // 
             // txtPassDate
             // 
-            this.txtPassDate.Location = new System.Drawing.Point(81, 112);
+            this.txtPassDate.Location = new System.Drawing.Point(112, 112);
             this.txtPassDate.Name = "txtPassDate";
             this.txtPassDate.Size = new System.Drawing.Size(100, 20);
             this.txtPassDate.TabIndex = 4;
@@ -306,7 +307,7 @@
             // 
             // txtDate
             // 
-            this.txtDate.Location = new System.Drawing.Point(81, 86);
+            this.txtDate.Location = new System.Drawing.Point(112, 86);
             this.txtDate.Name = "txtDate";
             this.txtDate.Size = new System.Drawing.Size(100, 20);
             this.txtDate.TabIndex = 3;
@@ -322,7 +323,7 @@
             // 
             // txtName
             // 
-            this.txtName.Location = new System.Drawing.Point(81, 60);
+            this.txtName.Location = new System.Drawing.Point(112, 60);
             this.txtName.Name = "txtName";
             this.txtName.Size = new System.Drawing.Size(100, 20);
             this.txtName.TabIndex = 2;
@@ -338,7 +339,7 @@
             // 
             // txtIdFather
             // 
-            this.txtIdFather.Location = new System.Drawing.Point(81, 34);
+            this.txtIdFather.Location = new System.Drawing.Point(112, 34);
             this.txtIdFather.Name = "txtIdFather";
             this.txtIdFather.Size = new System.Drawing.Size(100, 20);
             this.txtIdFather.TabIndex = 1;
@@ -354,7 +355,7 @@
             // 
             // txtId
             // 
-            this.txtId.Location = new System.Drawing.Point(81, 8);
+            this.txtId.Location = new System.Drawing.Point(112, 8);
             this.txtId.Name = "txtId";
             this.txtId.Size = new System.Drawing.Size(100, 20);
             this.txtId.TabIndex = 0;
@@ -561,12 +562,23 @@
             // 
             // panel3
             // 
+            this.panel3.Controls.Add(this.ExpadClose);
             this.panel3.Controls.Add(this.txtDongHo);
             this.panel3.Controls.Add(this.btnThemDongHo);
             this.panel3.Location = new System.Drawing.Point(16, 72);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(443, 58);
             this.panel3.TabIndex = 1;
+            // 
+            // ExpadClose
+            // 
+            this.ExpadClose.Location = new System.Drawing.Point(343, 22);
+            this.ExpadClose.Name = "ExpadClose";
+            this.ExpadClose.Size = new System.Drawing.Size(75, 23);
+            this.ExpadClose.TabIndex = 2;
+            this.ExpadClose.Text = "Expad-Close";
+            this.ExpadClose.UseVisualStyleBackColor = true;
+            this.ExpadClose.Click += new System.EventHandler(this.ExpadClose_Click);
             // 
             // txtDongHo
             // 
@@ -678,6 +690,7 @@
         private System.Windows.Forms.PrintDialog printDialog1;
         private System.Windows.Forms.Button btnThemDongHo;
         private System.Windows.Forms.TextBox txtDongHo;
+        private System.Windows.Forms.Button ExpadClose;
     }
 }
 

@@ -8,17 +8,29 @@ using OfficeOpenXml.Style;
 using System.IO;
 using LicenseContext = OfficeOpenXml.LicenseContext;
 using System.Drawing.Printing;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.TextBox;
 
 namespace FamilyTree
 {
     public partial class Form1 : Form
     {
-        List <Info> infos = new List <Info> ();
+        #region var&Form
+
+        List<Info> infos = new List <Info> ();
         public Form1()
         {
             InitializeComponent();            
         }
+        private void Form1_Load(object sender, EventArgs e)
+        {
+            treeView1.Refresh();
+            treeView1.ExpandAll();
+            DisabledBox();
+        }
 
+        #endregion
+
+        #region buttom
         private void btnThem_Click(object sender, EventArgs e)
         {
             ClearBox();            
@@ -28,7 +40,6 @@ namespace FamilyTree
             txtIdFather.Enabled = false;
             txtGen.Enabled = false;
         }
-
         private void btnSua_Click(object sender, EventArgs e)
         {
             if(txtId.Text == "")
@@ -58,7 +69,6 @@ namespace FamilyTree
             treeView1.Refresh();
             MessageBox.Show("Sửa thông tin thành công!");
         }
-
         private void btnXoa_Click(object sender, EventArgs e)
         {            
             if (txtId.Text == "")
@@ -77,7 +87,6 @@ namespace FamilyTree
             treeView1.SelectedNode.Remove();
             MessageBox.Show("Đã xóa thông tin thành công!");
         }
-
         private void btnHuy_Click(object sender, EventArgs e)
         {
             ClearBox();
@@ -86,13 +95,12 @@ namespace FamilyTree
             btnSua.Enabled = true;
             btnXoa.Enabled = true;
         }
-
         private void btnLuu_Click(object sender, EventArgs e)
         {
             Info info = new Info();
-            if (txtId.Text == "" || txtIdFather.Text == "" || txtName.Text == "" || txtDate.Text == "" || txtPassDate.Text == "" || txtSex.Text == ""
+            if (txtId.Text == "" /*|| txtIdFather.Text == ""*/ || txtName.Text == "" || txtDate.Text == "" || txtPassDate.Text == "" || txtSex.Text == ""
                 || txtHomePlace.Text == "" || txtPhone.Text == "" || txtMail.Text == "" || txtPosition.Text == "" || txtWorkPlace.Text == ""
-                || rtbNote.Text == "" || txtGen.Text == "")
+                || rtbNote.Text == "" /*|| txtGen.Text == ""*/)
             {
                 MessageBox.Show("Còn dữ liệu chưa nhập");
                 return;
@@ -110,11 +118,9 @@ namespace FamilyTree
             info.PersonNode.Work_place = txtWorkPlace.Text;
             info.PersonNode.Note = rtbNote.Text;
             info.NodeTree.Name = info.PersonNode.NameNode;
-            info.Gen = Int32.Parse(txtGen.Text);
-            foreach (Info info1 in infos)
-            {
-                if (info.PersonNode.Id.Trim() == info1.PersonNode.Id.Trim())
-                {
+            if(!txtGen.Text.Equals("")) info.Gen = Int32.Parse(txtGen.Text);
+            foreach (Info info1 in infos){
+                if (info.PersonNode.Id.Trim() == info1.PersonNode.Id.Trim()){
                     MessageBox.Show("ID chưa nhập hoặc đã tồn tại!");
                     return;
                 }  
@@ -128,10 +134,10 @@ namespace FamilyTree
             btnXoa.Enabled = true;
             MessageBox.Show("Đã lưu thông tin thành công!");
         }
-
         private void btnTim_Click(object sender, EventArgs e)
         {
             treeView2.Nodes.Clear();
+            treeView2.Refresh();
             if (txtTim.Text == "")
             {
                 MessageBox.Show("Chưa nhập nội dung tìm kiếm!");
@@ -147,13 +153,17 @@ namespace FamilyTree
                         || (txtTim.Text.Contains(info1.Gen.ToString())))
                 {
                     infotemp.Add(info1);
-                    treeView2.Nodes.Add(info1.NodeTree.Name);                    
-                    treeView2.Refresh();
+                    //treeView2.Nodes.Add(info1.NodeTree.Name);                    
+                    //treeView2.Refresh();
                 }
+            }
+            for (int i = 0; i < infotemp.Count; i++) { 
+                treeView2.Nodes.Add(infotemp[i].PersonNode.NameNode + " - " + infotemp[i].PersonNode.Date + " - " + infotemp[i].PersonNode.Home_place);
+                AddTreeView(treeView2.Nodes[i], infotemp[i].PersonNode.Id);
+            
             }
             MessageBox.Show("Có " + (treeView2.Nodes.Count) + " dữ liệu phù hợp với điều kiện tìm!");
         }
-
         private void btnIn_Click(object sender, EventArgs e)
         {
             PrintDialog pd = new PrintDialog();
@@ -162,21 +172,6 @@ namespace FamilyTree
                 //printDocument1.Print(); 
                 printDialog1.ShowDialog(treeView1);
             }
-        }
-
-        int AddTreeView(TreeNode temp, string fatherid)
-        {
-            int stt = 0;
-            int i;
-            for (i = 0; i < infos.Count; i++)
-            {
-                if (infos[i].PersonNode.IdFather == fatherid)
-                {
-                    temp.Nodes.Add(infos[i].PersonNode.NameNode + " - " + infos[i].PersonNode.Date + " - " + infos[i].PersonNode.Home_place);
-                    AddTreeView(temp.Nodes[stt++], infos[i].PersonNode.Id);
-                }
-            }
-            return 1;
         }
         private void btnMoFile_Click(object sender, EventArgs e)
         {
@@ -304,137 +299,18 @@ namespace FamilyTree
                 MessageBox.Show("Lỗi đọc file!");
             }
 
-            //==========================================================
-            //treeView1.Nodes.Add(infos[0].PersonNode.NameNode);
-            //treeView1.Nodes.Add(infos[1].PersonNode.NameNode);
-
-            //TreeNode temp;
-            //temp = treeView1.Nodes[0];
-            //temp.Nodes.Add(infos[3].PersonNode.NameNode);
-            //temp.Nodes.Add(infos[4].PersonNode.NameNode);
-            //temp.Nodes.Add(infos[4].PersonNode.NameNode);
-
-            //temp = temp.Nodes[0];
-            //temp.Nodes.Add(infos[3].PersonNode.NameNode);
-
-            //temp = temp.Nodes[0];
-            //temp.Nodes.Add(infos[3].PersonNode.NameNode);
-
-            //temp = temp.Nodes[0];
-            //temp.Nodes.Add(infos[3].PersonNode.NameNode);
-
-
             treeView1.Nodes.Add(infos[0].PersonNode.NameNode);
             AddTreeView(treeView1.Nodes[0], infos[0].PersonNode.Id);
             treeView1.ExpandAll();
         }
-
         private void btnThoat_Click(object sender, EventArgs e)
         {
             this.Close();
         }
-             
-        private void Form1_Load(object sender, EventArgs e)
-        {
-            treeView1.Refresh();
-            treeView1.ExpandAll();
-            DisabledBox();
-        }
-
-        private void treeView1_AfterSelect(object sender, TreeViewEventArgs e)
-        {
-            btnSua.Enabled = true;
-            btnXoa.Enabled = true;
-            treeView1.SelectedNode.Expand();
-            txtIdFather.Enabled = false;
-            txtGen.Enabled = false;
-            foreach (Info info1 in infos)
-            {
-                if (treeView1.SelectedNode.ToString().Substring(10) == info1.NodeTree.Name + " - " + info1.PersonNode.Date + " - " + info1.PersonNode.Home_place)
-                {
-                    txtIdFather.Text = info1.PersonNode.Id;
-                    txtGen.Text = (info1.Gen + 1).ToString();
-                }
-            }
-        }
-        private void DisplayPerson(Info info)
-        {
-            txtId.Text = info.PersonNode.Id;
-            txtIdFather.Text = info.PersonNode.IdFather;
-            txtName.Text = info.PersonNode.NameNode;
-            txtDate.Text = info.PersonNode.Date;
-            txtPassDate.Text = info.PersonNode.PassDate;
-            txtSex.Text = info.PersonNode.Sex;
-            txtHomePlace.Text = info.PersonNode.Home_place;
-            txtPhone.Text = info.PersonNode.Phone;
-            txtMail.Text = info.PersonNode.Email;
-            txtPosition.Text = info.PersonNode.Position;
-            txtWorkPlace.Text = info.PersonNode.Work_place;
-            rtbNote.Text = info.PersonNode.Note;
-            txtGen.Text = info.Gen.ToString();
-        }
-                
-        private void ClearBox()
-        {
-            txtId.Text = "";
-            txtIdFather.Text = "";
-            txtName.Text = "";
-            txtDate.Text = "";
-            txtPassDate.Text = "";
-            txtSex.Text = "";
-            txtHomePlace.Text = "";
-            txtPhone.Text = "";
-            txtMail.Text = "";
-            txtPosition.Text = "";
-            txtWorkPlace.Text = "";
-            rtbNote.Text = "";
-            txtGen.Text = "";
-        }
-        private void DisabledBox()
-        {
-            txtId.Enabled = false;
-            txtIdFather.Enabled = false;
-            txtName.Enabled = false;
-            txtDate.Enabled = false;
-            txtPassDate.Enabled = false;
-            txtSex.Enabled = false;
-            txtHomePlace.Enabled = false;
-            txtPhone.Enabled = false;
-            txtMail.Enabled = false;
-            txtPosition.Enabled = false;
-            txtWorkPlace.Enabled = false;
-            rtbNote.Enabled = false;
-            txtGen.Enabled = false;
-        }
-        private void EnableBox()
-        {
-            txtId.Enabled = true;
-            txtIdFather.Enabled = true;
-            txtName.Enabled = true;
-            txtDate.Enabled = true;
-            txtPassDate.Enabled = true;
-            txtSex.Enabled = true;
-            txtHomePlace.Enabled = true;
-            txtPhone.Enabled = true;
-            txtMail.Enabled = true;
-            txtPosition.Enabled = true;
-            txtWorkPlace.Enabled = true;
-            rtbNote.Enabled = true;
-            txtGen.Enabled = true;
-        }        
-
         private void btnCount_Click(object sender, EventArgs e)
         {
             MessageBox.Show("Tổng số người trong dòng họ: " + infos.Count + " và tổng số node trong cây: " + treeView1.GetNodeCount(true));
         }
-        private int CheckName(string name)
-        {
-            if (treeView1.SelectedNode.ToString().Substring(10) == name)
-                return 1;
-            else
-                return 0;
-        }
-
         private void btnXuatFile_Click(object sender, EventArgs e)
         {
             string filePath = "";
@@ -459,7 +335,8 @@ namespace FamilyTree
 
             try
             {
-                ExcelPackage.LicenseContext = LicenseContext.NonCommercial; //Nếu ko có dòng này thì sẽ có ex "Please set the ExcelPackage.LicenseContext properties"
+                ExcelPackage.LicenseContext = LicenseContext.NonCommercial; 
+                //Nếu ko có dòng này thì sẽ có ex "Please set the ExcelPackage.LicenseContext properties"
                 using (ExcelPackage p = new ExcelPackage())
                 {                    
                     //Tạo một sheet để làm việc trên đó với tên tự đặt
@@ -552,7 +429,6 @@ namespace FamilyTree
                 MessageBox.Show("Có lỗi khi lưu file!");
             }
         }
-
         private void btnLamMoi_Click_2(object sender, EventArgs e)
         {
             try
@@ -567,7 +443,102 @@ namespace FamilyTree
             }
             
         }
+        private void printDocument1_PrintPage(object sender, PrintPageEventArgs e)
+        {
+            Bitmap bmp = new Bitmap(this.treeView1.Width, this.treeView1.Height);
+            this.treeView1.DrawToBitmap(bmp, new Rectangle(0, 0, this.treeView1.Width, this.treeView1.Height));
+            e.Graphics.DrawImage(bmp, 0, 0);
+            MessageBox.Show("Tạo sơ đồ gia phả thành công!");
+        }
+        private void btnThemDongHo_Click(object sender, EventArgs e)
+        {
+            /*Info rootNode = new Info();
+            rootNode.PersonNode.NameNode = txtDongHo.Text;
+            rootNode.PersonNode.IdFather = "-1";
+            rootNode.PersonNode.Id = "0";
+            rootNode.Gen = 0;
+            rootNode.NodeTree.Name = rootNode.PersonNode.NameNode;
+            infos.Add(rootNode);
+            treeView1.Nodes.Add(rootNode.NodeTree.Name);
+            txtDongHo.Text = "";*/
+            if (infos.Count == 0)
+            {
+                Info rootNode = new Info();
+                rootNode.PersonNode.NameNode = txtDongHo.Text;
+                rootNode.PersonNode.IdFather = "-1";
+                rootNode.PersonNode.Id = "0";
+                rootNode.Gen = 0;
+                rootNode.NodeTree.Name = rootNode.PersonNode.NameNode;
+                infos.Add(rootNode);
+                treeView1.Nodes.Add(rootNode.NodeTree.Name);
+                txtDongHo.Text = "";
+            }
+            else
+            {
+                MessageBox.Show("Đã có dòng họ. Không thể thêm dòng họ!");
+            }
 
+        }
+        private void ExpadClose_Click(object sender, EventArgs e)
+        {
+            //if (treeView1.)
+            if (treeView1.SelectedNode.IsExpanded == true) { 
+                treeView1.SelectedNode.Collapse();
+            } else {
+                treeView1.SelectedNode.ExpandAll();
+            }
+        }
+
+        #endregion
+
+        #region ALGO AddTreeView
+        int AddTreeView(TreeNode temp, string fatherid)
+        {
+            int stt = 0;
+            int i;
+            for (i = 0; i < infos.Count; i++)
+            {
+                if (infos[i].PersonNode.IdFather == fatherid)
+                {
+                    temp.Nodes.Add(infos[i].PersonNode.NameNode + " - " + infos[i].PersonNode.Date + " - " + infos[i].PersonNode.Home_place);
+                    AddTreeView(temp.Nodes[stt++], infos[i].PersonNode.Id);
+                }
+            }
+            return 1;
+        }
+
+        #endregion
+        
+        #region Bổ trợ
+        private void treeView1_AfterSelect(object sender, TreeViewEventArgs e)
+        {
+            btnSua.Enabled = true;
+            btnXoa.Enabled = true;
+            treeView1.SelectedNode.Expand();
+            txtIdFather.Enabled = false;
+            txtGen.Enabled = false;
+            foreach (Info info1 in infos)
+            {
+                if (treeView1.SelectedNode.ToString().Substring(10) == info1.NodeTree.Name + " - " + info1.PersonNode.Date + " - " + info1.PersonNode.Home_place)
+                {
+                    int numberOfChildNodes = treeView1.SelectedNode.Nodes.Count;
+                    //MessageBox.Show(numberOfChildNodes.ToString());
+                    lblId.Text = "addnew with id = ";
+                    lblIdFather.Text = "addnew with id cha = ";
+                    if (numberOfChildNodes == 0)
+                    {
+                        
+                        txtId.Text = info1.PersonNode.Id + "1";
+                    } else
+                    {
+                        string idchildcont = info1.PersonNode.Id + (numberOfChildNodes+1).ToString();
+                        txtId.Text = idchildcont;
+                    }
+                    txtIdFather.Text = info1.PersonNode.Id;
+                    txtGen.Text = (info1.Gen + 1).ToString();
+                }
+            }
+        }
         private void treeView1_NodeMouseDoubleClick(object sender, TreeNodeMouseClickEventArgs e)
         {
             treeView1.ExpandAll();
@@ -575,6 +546,8 @@ namespace FamilyTree
             btnXoa.Enabled = true;
             EnableBox();
             txtId.Enabled = false;
+            lblId.Text = "id ";
+            lblIdFather.Text = "id cha ";
             foreach (Info info1 in infos)
             {
                 if (treeView1.SelectedNode.ToString().Substring(10) == info1.NodeTree.Name + " - " + info1.PersonNode.Date + " - " + info1.PersonNode.Home_place)
@@ -583,7 +556,6 @@ namespace FamilyTree
                 }
             }
         }
-
         private void treeView2_AfterSelect(object sender, TreeViewEventArgs e)
         {
             treeView2.ExpandAll();
@@ -596,36 +568,83 @@ namespace FamilyTree
                 {
                     DisplayPerson(info1);
                 }
+
             }
         }
-
-        private void printDocument1_PrintPage(object sender, PrintPageEventArgs e)
+        private void DisplayPerson(Info info)
         {
-            Bitmap bmp = new Bitmap(this.treeView1.Width, this.treeView1.Height);
-            this.treeView1.DrawToBitmap(bmp, new Rectangle(0, 0, this.treeView1.Width, this.treeView1.Height));
-            e.Graphics.DrawImage(bmp, 0, 0);
-            MessageBox.Show("Tạo sơ đồ gia phả thành công!");
+            txtId.Text = info.PersonNode.Id;
+            txtIdFather.Text = info.PersonNode.IdFather;
+            txtName.Text = info.PersonNode.NameNode;
+            txtDate.Text = info.PersonNode.Date;
+            txtPassDate.Text = info.PersonNode.PassDate;
+            txtSex.Text = info.PersonNode.Sex;
+            txtHomePlace.Text = info.PersonNode.Home_place;
+            txtPhone.Text = info.PersonNode.Phone;
+            txtMail.Text = info.PersonNode.Email;
+            txtPosition.Text = info.PersonNode.Position;
+            txtWorkPlace.Text = info.PersonNode.Work_place;
+            rtbNote.Text = info.PersonNode.Note;
+            txtGen.Text = info.Gen.ToString();
         }
-
-        private void btnThemDongHo_Click(object sender, EventArgs e)
+        private int CheckName(string name)
         {
-            if (infos.Count == 0)
-            {
-                Info rootNode = new Info();
-                rootNode.PersonNode.NameNode = txtDongHo.Text;
-                rootNode.PersonNode.IdFather = "-1";
-                rootNode.PersonNode.Id = "1";
-                rootNode.Gen = 0;
-                rootNode.NodeTree.Name = rootNode.PersonNode.NameNode;
-                infos.Add(rootNode);
-                treeView1.Nodes.Add(rootNode.NodeTree.Name);
-                txtDongHo.Text = "";
-            }
+            if (treeView1.SelectedNode.ToString().Substring(10) == name)
+                return 1;
             else
-            {
-                MessageBox.Show("Đã có dòng họ. Không thể thêm dòng họ!");
-            }
-            
+                return 0;
         }
+        private void ClearBox()
+        {
+            txtId.Text = "";
+            txtIdFather.Text = "";
+            txtName.Text = "";
+            txtDate.Text = "";
+            txtPassDate.Text = "";
+            txtSex.Text = "";
+            txtHomePlace.Text = "";
+            txtPhone.Text = "";
+            txtMail.Text = "";
+            txtPosition.Text = "";
+            txtWorkPlace.Text = "";
+            rtbNote.Text = "";
+            txtGen.Text = "";
+        }
+        private void DisabledBox()
+        {
+            txtId.Enabled = false;
+            txtIdFather.Enabled = false;
+            txtName.Enabled = false;
+            txtDate.Enabled = false;
+            txtPassDate.Enabled = false;
+            txtSex.Enabled = false;
+            txtHomePlace.Enabled = false;
+            txtPhone.Enabled = false;
+            txtMail.Enabled = false;
+            txtPosition.Enabled = false;
+            txtWorkPlace.Enabled = false;
+            rtbNote.Enabled = false;
+            txtGen.Enabled = false;
+        }
+        private void EnableBox()
+        {
+            txtId.Enabled = true;
+            txtIdFather.Enabled = true;
+            txtName.Enabled = true;
+            txtDate.Enabled = true;
+            txtPassDate.Enabled = true;
+            txtSex.Enabled = true;
+            txtHomePlace.Enabled = true;
+            txtPhone.Enabled = true;
+            txtMail.Enabled = true;
+            txtPosition.Enabled = true;
+            txtWorkPlace.Enabled = true;
+            rtbNote.Enabled = true;
+            txtGen.Enabled = true;
+        }        
+        
+        #endregion
+
+                
     }
 }
