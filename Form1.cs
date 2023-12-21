@@ -39,6 +39,9 @@ namespace FamilyTree
             EnableBox();
             txtIdFather.Enabled = false;
             txtGen.Enabled = false;
+            lblId.Text = "ID = ";
+            lblIdFather.Text = "ID Cha = ";
+
         }
         private void btnSua_Click(object sender, EventArgs e)
         {
@@ -94,6 +97,8 @@ namespace FamilyTree
             DisabledBox();
             btnSua.Enabled = true;
             btnXoa.Enabled = true;
+            lblId.Text = "ID ";
+            lblIdFather.Text = "ID Cha";
         }
         private void btnLuu_Click(object sender, EventArgs e)
         {
@@ -452,15 +457,6 @@ namespace FamilyTree
         }
         private void btnThemDongHo_Click(object sender, EventArgs e)
         {
-            /*Info rootNode = new Info();
-            rootNode.PersonNode.NameNode = txtDongHo.Text;
-            rootNode.PersonNode.IdFather = "-1";
-            rootNode.PersonNode.Id = "0";
-            rootNode.Gen = 0;
-            rootNode.NodeTree.Name = rootNode.PersonNode.NameNode;
-            infos.Add(rootNode);
-            treeView1.Nodes.Add(rootNode.NodeTree.Name);
-            txtDongHo.Text = "";*/
             if (infos.Count == 0)
             {
                 Info rootNode = new Info();
@@ -523,8 +519,6 @@ namespace FamilyTree
                 {
                     int numberOfChildNodes = treeView1.SelectedNode.Nodes.Count;
                     //MessageBox.Show(numberOfChildNodes.ToString());
-                    lblId.Text = "addnew with id = ";
-                    lblIdFather.Text = "addnew with id cha = ";
                     if (numberOfChildNodes == 0)
                     {
                         
@@ -546,8 +540,8 @@ namespace FamilyTree
             btnXoa.Enabled = true;
             EnableBox();
             txtId.Enabled = false;
-            lblId.Text = "id ";
-            lblIdFather.Text = "id cha ";
+            lblId.Text = "ID ";
+            lblIdFather.Text = "ID Cha ";
             foreach (Info info1 in infos)
             {
                 if (treeView1.SelectedNode.ToString().Substring(10) == info1.NodeTree.Name + " - " + info1.PersonNode.Date + " - " + info1.PersonNode.Home_place)
@@ -625,6 +619,7 @@ namespace FamilyTree
             txtWorkPlace.Enabled = false;
             rtbNote.Enabled = false;
             txtGen.Enabled = false;
+            labeladdnew.Visible = false;
         }
         private void EnableBox()
         {
@@ -641,6 +636,7 @@ namespace FamilyTree
             txtWorkPlace.Enabled = true;
             rtbNote.Enabled = true;
             txtGen.Enabled = true;
+            labeladdnew.Visible = true;
         }        
         
         #endregion

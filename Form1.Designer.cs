@@ -84,6 +84,8 @@
             this.btnThemDongHo = new System.Windows.Forms.Button();
             this.printDocument1 = new System.Drawing.Printing.PrintDocument();
             this.printDialog1 = new System.Windows.Forms.PrintDialog();
+            this.labeladdnew = new System.Windows.Forms.Label();
+            this.lblNote2 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel8.SuspendLayout();
@@ -129,6 +131,8 @@
             // 
             // panel8
             // 
+            this.panel8.Controls.Add(this.lblNote2);
+            this.panel8.Controls.Add(this.labeladdnew);
             this.panel8.Controls.Add(this.txtSex);
             this.panel8.Controls.Add(this.rtbNote);
             this.panel8.Controls.Add(this.lblNote);
@@ -162,23 +166,23 @@
             // 
             // txtSex
             // 
-            this.txtSex.Location = new System.Drawing.Point(112, 139);
+            this.txtSex.Location = new System.Drawing.Point(100, 160);
             this.txtSex.Name = "txtSex";
             this.txtSex.Size = new System.Drawing.Size(100, 20);
             this.txtSex.TabIndex = 5;
             // 
             // rtbNote
             // 
-            this.rtbNote.Location = new System.Drawing.Point(310, 145);
+            this.rtbNote.Location = new System.Drawing.Point(310, 166);
             this.rtbNote.Name = "rtbNote";
-            this.rtbNote.Size = new System.Drawing.Size(118, 96);
+            this.rtbNote.Size = new System.Drawing.Size(118, 67);
             this.rtbNote.TabIndex = 12;
             this.rtbNote.Text = "";
             // 
             // lblNote
             // 
             this.lblNote.AutoSize = true;
-            this.lblNote.Location = new System.Drawing.Point(237, 145);
+            this.lblNote.Location = new System.Drawing.Point(237, 166);
             this.lblNote.Name = "lblNote";
             this.lblNote.Size = new System.Drawing.Size(44, 13);
             this.lblNote.TabIndex = 0;
@@ -186,7 +190,7 @@
             // 
             // txtGen
             // 
-            this.txtGen.Location = new System.Drawing.Point(310, 112);
+            this.txtGen.Location = new System.Drawing.Point(310, 133);
             this.txtGen.Name = "txtGen";
             this.txtGen.Size = new System.Drawing.Size(100, 20);
             this.txtGen.TabIndex = 11;
@@ -194,7 +198,7 @@
             // lblGen
             // 
             this.lblGen.AutoSize = true;
-            this.lblGen.Location = new System.Drawing.Point(237, 119);
+            this.lblGen.Location = new System.Drawing.Point(237, 140);
             this.lblGen.Name = "lblGen";
             this.lblGen.Size = new System.Drawing.Size(41, 13);
             this.lblGen.TabIndex = 0;
@@ -202,7 +206,7 @@
             // 
             // txtWorkPlace
             // 
-            this.txtWorkPlace.Location = new System.Drawing.Point(310, 86);
+            this.txtWorkPlace.Location = new System.Drawing.Point(310, 107);
             this.txtWorkPlace.Name = "txtWorkPlace";
             this.txtWorkPlace.Size = new System.Drawing.Size(100, 20);
             this.txtWorkPlace.TabIndex = 10;
@@ -210,7 +214,7 @@
             // lblWorkPlace
             // 
             this.lblWorkPlace.AutoSize = true;
-            this.lblWorkPlace.Location = new System.Drawing.Point(237, 93);
+            this.lblWorkPlace.Location = new System.Drawing.Point(237, 114);
             this.lblWorkPlace.Name = "lblWorkPlace";
             this.lblWorkPlace.Size = new System.Drawing.Size(65, 13);
             this.lblWorkPlace.TabIndex = 0;
@@ -218,7 +222,7 @@
             // 
             // txtPosition
             // 
-            this.txtPosition.Location = new System.Drawing.Point(310, 60);
+            this.txtPosition.Location = new System.Drawing.Point(310, 81);
             this.txtPosition.Name = "txtPosition";
             this.txtPosition.Size = new System.Drawing.Size(100, 20);
             this.txtPosition.TabIndex = 9;
@@ -226,7 +230,7 @@
             // lblPosition
             // 
             this.lblPosition.AutoSize = true;
-            this.lblPosition.Location = new System.Drawing.Point(237, 67);
+            this.lblPosition.Location = new System.Drawing.Point(237, 88);
             this.lblPosition.Name = "lblPosition";
             this.lblPosition.Size = new System.Drawing.Size(47, 13);
             this.lblPosition.TabIndex = 0;
@@ -234,7 +238,7 @@
             // 
             // txtMail
             // 
-            this.txtMail.Location = new System.Drawing.Point(310, 34);
+            this.txtMail.Location = new System.Drawing.Point(310, 55);
             this.txtMail.Name = "txtMail";
             this.txtMail.Size = new System.Drawing.Size(100, 20);
             this.txtMail.TabIndex = 8;
@@ -242,7 +246,7 @@
             // lalMail
             // 
             this.lalMail.AutoSize = true;
-            this.lalMail.Location = new System.Drawing.Point(237, 41);
+            this.lalMail.Location = new System.Drawing.Point(237, 62);
             this.lalMail.Name = "lalMail";
             this.lalMail.Size = new System.Drawing.Size(32, 13);
             this.lalMail.TabIndex = 0;
@@ -250,7 +254,7 @@
             // 
             // txtPhone
             // 
-            this.txtPhone.Location = new System.Drawing.Point(310, 8);
+            this.txtPhone.Location = new System.Drawing.Point(310, 29);
             this.txtPhone.Name = "txtPhone";
             this.txtPhone.Size = new System.Drawing.Size(100, 20);
             this.txtPhone.TabIndex = 7;
@@ -258,7 +262,7 @@
             // lblPhone
             // 
             this.lblPhone.AutoSize = true;
-            this.lblPhone.Location = new System.Drawing.Point(237, 15);
+            this.lblPhone.Location = new System.Drawing.Point(237, 36);
             this.lblPhone.Name = "lblPhone";
             this.lblPhone.Size = new System.Drawing.Size(70, 13);
             this.lblPhone.TabIndex = 0;
@@ -266,7 +270,7 @@
             // 
             // txtHomePlace
             // 
-            this.txtHomePlace.Location = new System.Drawing.Point(112, 164);
+            this.txtHomePlace.Location = new System.Drawing.Point(100, 185);
             this.txtHomePlace.Name = "txtHomePlace";
             this.txtHomePlace.Size = new System.Drawing.Size(100, 20);
             this.txtHomePlace.TabIndex = 6;
@@ -274,7 +278,7 @@
             // lblHomePlace
             // 
             this.lblHomePlace.AutoSize = true;
-            this.lblHomePlace.Location = new System.Drawing.Point(19, 171);
+            this.lblHomePlace.Location = new System.Drawing.Point(19, 192);
             this.lblHomePlace.Name = "lblHomePlace";
             this.lblHomePlace.Size = new System.Drawing.Size(59, 13);
             this.lblHomePlace.TabIndex = 0;
@@ -283,7 +287,7 @@
             // lblSex
             // 
             this.lblSex.AutoSize = true;
-            this.lblSex.Location = new System.Drawing.Point(19, 145);
+            this.lblSex.Location = new System.Drawing.Point(19, 166);
             this.lblSex.Name = "lblSex";
             this.lblSex.Size = new System.Drawing.Size(47, 13);
             this.lblSex.TabIndex = 0;
@@ -291,7 +295,7 @@
             // 
             // txtPassDate
             // 
-            this.txtPassDate.Location = new System.Drawing.Point(112, 112);
+            this.txtPassDate.Location = new System.Drawing.Point(100, 133);
             this.txtPassDate.Name = "txtPassDate";
             this.txtPassDate.Size = new System.Drawing.Size(100, 20);
             this.txtPassDate.TabIndex = 4;
@@ -299,7 +303,7 @@
             // lblPassDate
             // 
             this.lblPassDate.AutoSize = true;
-            this.lblPassDate.Location = new System.Drawing.Point(19, 119);
+            this.lblPassDate.Location = new System.Drawing.Point(19, 140);
             this.lblPassDate.Name = "lblPassDate";
             this.lblPassDate.Size = new System.Drawing.Size(52, 13);
             this.lblPassDate.TabIndex = 0;
@@ -307,7 +311,7 @@
             // 
             // txtDate
             // 
-            this.txtDate.Location = new System.Drawing.Point(112, 86);
+            this.txtDate.Location = new System.Drawing.Point(100, 107);
             this.txtDate.Name = "txtDate";
             this.txtDate.Size = new System.Drawing.Size(100, 20);
             this.txtDate.TabIndex = 3;
@@ -315,7 +319,7 @@
             // lblDate
             // 
             this.lblDate.AutoSize = true;
-            this.lblDate.Location = new System.Drawing.Point(19, 93);
+            this.lblDate.Location = new System.Drawing.Point(19, 114);
             this.lblDate.Name = "lblDate";
             this.lblDate.Size = new System.Drawing.Size(54, 13);
             this.lblDate.TabIndex = 0;
@@ -323,7 +327,7 @@
             // 
             // txtName
             // 
-            this.txtName.Location = new System.Drawing.Point(112, 60);
+            this.txtName.Location = new System.Drawing.Point(100, 81);
             this.txtName.Name = "txtName";
             this.txtName.Size = new System.Drawing.Size(100, 20);
             this.txtName.TabIndex = 2;
@@ -331,7 +335,7 @@
             // lblName
             // 
             this.lblName.AutoSize = true;
-            this.lblName.Location = new System.Drawing.Point(19, 67);
+            this.lblName.Location = new System.Drawing.Point(19, 88);
             this.lblName.Name = "lblName";
             this.lblName.Size = new System.Drawing.Size(54, 13);
             this.lblName.TabIndex = 0;
@@ -339,7 +343,7 @@
             // 
             // txtIdFather
             // 
-            this.txtIdFather.Location = new System.Drawing.Point(112, 34);
+            this.txtIdFather.Location = new System.Drawing.Point(100, 55);
             this.txtIdFather.Name = "txtIdFather";
             this.txtIdFather.Size = new System.Drawing.Size(100, 20);
             this.txtIdFather.TabIndex = 1;
@@ -347,7 +351,7 @@
             // lblIdFather
             // 
             this.lblIdFather.AutoSize = true;
-            this.lblIdFather.Location = new System.Drawing.Point(19, 41);
+            this.lblIdFather.Location = new System.Drawing.Point(19, 62);
             this.lblIdFather.Name = "lblIdFather";
             this.lblIdFather.Size = new System.Drawing.Size(40, 13);
             this.lblIdFather.TabIndex = 0;
@@ -355,7 +359,7 @@
             // 
             // txtId
             // 
-            this.txtId.Location = new System.Drawing.Point(112, 8);
+            this.txtId.Location = new System.Drawing.Point(100, 29);
             this.txtId.Name = "txtId";
             this.txtId.Size = new System.Drawing.Size(100, 20);
             this.txtId.TabIndex = 0;
@@ -363,7 +367,7 @@
             // lblId
             // 
             this.lblId.AutoSize = true;
-            this.lblId.Location = new System.Drawing.Point(19, 15);
+            this.lblId.Location = new System.Drawing.Point(19, 36);
             this.lblId.Name = "lblId";
             this.lblId.Size = new System.Drawing.Size(18, 13);
             this.lblId.TabIndex = 0;
@@ -606,6 +610,25 @@
             this.printDialog1.Document = this.printDocument1;
             this.printDialog1.UseEXDialog = true;
             // 
+            // labeladdnew
+            // 
+            this.labeladdnew.AutoSize = true;
+            this.labeladdnew.Location = new System.Drawing.Point(20, 13);
+            this.labeladdnew.Name = "labeladdnew";
+            this.labeladdnew.Size = new System.Drawing.Size(76, 13);
+            this.labeladdnew.TabIndex = 13;
+            this.labeladdnew.Text = "Thêm mới với: ";
+            this.labeladdnew.Visible = false;
+            // 
+            // lblNote2
+            // 
+            this.lblNote2.AutoSize = true;
+            this.lblNote2.Location = new System.Drawing.Point(20, 214);
+            this.lblNote2.Name = "lblNote2";
+            this.lblNote2.Size = new System.Drawing.Size(149, 39);
+            this.lblNote2.TabIndex = 14;
+            this.lblNote2.Text = "Chú ý ⚠️ :\r\n1 Click để chọn làm node cha\r\n2 Click để xem thông tin node";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -691,6 +714,8 @@
         private System.Windows.Forms.Button btnThemDongHo;
         private System.Windows.Forms.TextBox txtDongHo;
         private System.Windows.Forms.Button ExpadClose;
+        private System.Windows.Forms.Label labeladdnew;
+        private System.Windows.Forms.Label lblNote2;
     }
 }
 

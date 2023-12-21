@@ -33,3 +33,20 @@ D:\VB2\2. Ki.II\7. Thực tập KTLT\THực tập\FamilyTree -final\obj\Debug\Fa
 D:\VB2\2. Ki.II\7. Thực tập KTLT\THực tập\FamilyTree -final\obj\Debug\FamilyTree.csproj.CopyComplete
 D:\VB2\2. Ki.II\7. Thực tập KTLT\THực tập\FamilyTree -final\obj\Debug\FamilyTree.exe
 D:\VB2\2. Ki.II\7. Thực tập KTLT\THực tập\FamilyTree -final\obj\Debug\FamilyTree.pdb
+D:\VB2\7. Git Code\FamilyTree-TT\bin\Debug\FamilyTree.exe.config
+D:\VB2\7. Git Code\FamilyTree-TT\bin\Debug\FamilyTree.exe
+D:\VB2\7. Git Code\FamilyTree-TT\bin\Debug\FamilyTree.pdb
+D:\VB2\7. Git Code\FamilyTree-TT\bin\Debug\EPPlus.dll
+D:\VB2\7. Git Code\FamilyTree-TT\bin\Debug\EPPlus.Interfaces.dll
+D:\VB2\7. Git Code\FamilyTree-TT\bin\Debug\EPPlus.System.Drawing.dll
+D:\VB2\7. Git Code\FamilyTree-TT\bin\Debug\Microsoft.IO.RecyclableMemoryStream.dll
+D:\VB2\7. Git Code\FamilyTree-TT\bin\Debug\EPPlus.xml
+D:\VB2\7. Git Code\FamilyTree-TT\bin\Debug\Microsoft.IO.RecyclableMemoryStream.xml
+D:\VB2\7. Git Code\FamilyTree-TT\obj\Debug\FamilyTree.csproj.AssemblyReference.cache
+D:\VB2\7. Git Code\FamilyTree-TT\obj\Debug\FamilyTree.Form1.resources
+D:\VB2\7. Git Code\FamilyTree-TT\obj\Debug\FamilyTree.Properties.Resources.resources
+D:\VB2\7. Git Code\FamilyTree-TT\obj\Debug\FamilyTree.csproj.GenerateResource.cache
+D:\VB2\7. Git Code\FamilyTree-TT\obj\Debug\FamilyTree.csproj.CoreCompileInputs.cache
+D:\VB2\7. Git Code\FamilyTree-TT\obj\Debug\FamilyTree.csproj.CopyComplete
+D:\VB2\7. Git Code\FamilyTree-TT\obj\Debug\FamilyTree.exe
+D:\VB2\7. Git Code\FamilyTree-TT\obj\Debug\FamilyTree.pdb
