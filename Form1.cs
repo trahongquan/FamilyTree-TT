@@ -158,8 +158,6 @@ namespace FamilyTree
                         || (txtTim.Text.Contains(info1.Gen.ToString())))
                 {
                     infotemp.Add(info1);
-                    //treeView2.Nodes.Add(info1.NodeTree.Name);                    
-                    //treeView2.Refresh();
                 }
             }
             for (int i = 0; i < infotemp.Count; i++) { 

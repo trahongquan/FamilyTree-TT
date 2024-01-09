@@ -33,6 +33,8 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
             this.panel8 = new System.Windows.Forms.Panel();
+            this.lblNote2 = new System.Windows.Forms.Label();
+            this.labeladdnew = new System.Windows.Forms.Label();
             this.txtSex = new System.Windows.Forms.TextBox();
             this.rtbNote = new System.Windows.Forms.RichTextBox();
             this.lblNote = new System.Windows.Forms.Label();
@@ -84,8 +86,6 @@
             this.btnThemDongHo = new System.Windows.Forms.Button();
             this.printDocument1 = new System.Drawing.Printing.PrintDocument();
             this.printDialog1 = new System.Windows.Forms.PrintDialog();
-            this.labeladdnew = new System.Windows.Forms.Label();
-            this.lblNote2 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel8.SuspendLayout();
@@ -163,6 +163,25 @@
             this.panel8.Name = "panel8";
             this.panel8.Size = new System.Drawing.Size(443, 259);
             this.panel8.TabIndex = 7;
+            // 
+            // lblNote2
+            // 
+            this.lblNote2.AutoSize = true;
+            this.lblNote2.Location = new System.Drawing.Point(20, 214);
+            this.lblNote2.Name = "lblNote2";
+            this.lblNote2.Size = new System.Drawing.Size(149, 39);
+            this.lblNote2.TabIndex = 14;
+            this.lblNote2.Text = "Chú ý ⚠️ :\r\n1 Click để chọn làm node cha\r\n2 Click để xem thông tin node";
+            // 
+            // labeladdnew
+            // 
+            this.labeladdnew.AutoSize = true;
+            this.labeladdnew.Location = new System.Drawing.Point(20, 13);
+            this.labeladdnew.Name = "labeladdnew";
+            this.labeladdnew.Size = new System.Drawing.Size(76, 13);
+            this.labeladdnew.TabIndex = 13;
+            this.labeladdnew.Text = "Thêm mới với: ";
+            this.labeladdnew.Visible = false;
             // 
             // txtSex
             // 
@@ -305,9 +324,9 @@
             this.lblPassDate.AutoSize = true;
             this.lblPassDate.Location = new System.Drawing.Point(19, 140);
             this.lblPassDate.Name = "lblPassDate";
-            this.lblPassDate.Size = new System.Drawing.Size(52, 13);
+            this.lblPassDate.Size = new System.Drawing.Size(56, 13);
             this.lblPassDate.TabIndex = 0;
-            this.lblPassDate.Text = "Ngày mất";
+            this.lblPassDate.Text = "Vợ/Chồng";
             // 
             // txtDate
             // 
@@ -609,25 +628,6 @@
             // 
             this.printDialog1.Document = this.printDocument1;
             this.printDialog1.UseEXDialog = true;
-            // 
-            // labeladdnew
-            // 
-            this.labeladdnew.AutoSize = true;
-            this.labeladdnew.Location = new System.Drawing.Point(20, 13);
-            this.labeladdnew.Name = "labeladdnew";
-            this.labeladdnew.Size = new System.Drawing.Size(76, 13);
-            this.labeladdnew.TabIndex = 13;
-            this.labeladdnew.Text = "Thêm mới với: ";
-            this.labeladdnew.Visible = false;
-            // 
-            // lblNote2
-            // 
-            this.lblNote2.AutoSize = true;
-            this.lblNote2.Location = new System.Drawing.Point(20, 214);
-            this.lblNote2.Name = "lblNote2";
-            this.lblNote2.Size = new System.Drawing.Size(149, 39);
-            this.lblNote2.TabIndex = 14;
-            this.lblNote2.Text = "Chú ý ⚠️ :\r\n1 Click để chọn làm node cha\r\n2 Click để xem thông tin node";
             // 
             // Form1
             // 
